@@ -29,6 +29,10 @@ public class SqlProductStorageTest {
         return SqlProductStorage();
     }
 
+    private ProductStorage SqlProductStorage() {
+        return null;
+    }
+
     @Test
     void idLoadsAllProducts(){
         Product product = thereIsProduct();

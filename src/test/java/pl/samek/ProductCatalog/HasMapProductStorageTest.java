@@ -3,6 +3,7 @@ package pl.samek.ProductCatalog;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -22,11 +23,15 @@ public class HasMapProductStorageTest {
     }
 
     private Product thereIsProduct() {
-        return null;
+        return new Product(UUID.randomUUID(),"there is", "whatever");
     }
 
     private ProductStorage thereIsStorage() {
         return HashMapProductStorage();
+    }
+
+    private ProductStorage HashMapProductStorage() {
+        return null;
     }
 
     @Test
