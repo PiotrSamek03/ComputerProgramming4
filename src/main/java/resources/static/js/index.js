@@ -16,7 +16,7 @@ const createHtmlEl = (product) => {
     return el;
 }
 
-(() => {
+(async () => {
     const productList = document.querySelector('.products');
     getProducts()
         .then(products => console.log(products))

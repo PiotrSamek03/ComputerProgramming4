@@ -1,4 +1,4 @@
-package pl.samek.ProductCatalog;
+package pl.samek.ecommerce.ProductCatalog;
 
 import java.util.List;
 

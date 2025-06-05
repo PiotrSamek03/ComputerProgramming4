@@ -2,8 +2,10 @@ package pl.samek.ecommerce;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-import pl.samek.ProductCatalog.Product;
-import pl.samek.ProductCatalog.ProductCatalog;
+
+import pl.samek.ecommerce.ProductCatalog.Product;
+import pl.samek.ecommerce.ProductCatalog.ProductCatalog;
+
 
 import java.util.List;
 
@@ -20,9 +22,9 @@ public class ProductCatalogController {
     public String version() {
         return "v0.0.1";
     }
-
     @GetMapping("/api/products")
     public List<Product> allProducts() {
         return productCatalog.allProducts();
     }
+
 }
