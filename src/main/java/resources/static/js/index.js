@@ -4,21 +4,20 @@ const getProducts = async () => {
 }
 
 const createHtmlEl = (product) => {
-    product.price = undefined;
     const template = `
         <h4>${product.name}</h4>
         <p>${product.description}</p>
         <span>${product.price}</span>
     `;
-
-    const el = document.createElement("li");
+    const el = document.createElement('li');
     el.innerHTML = template.trim();
     return el;
 }
 
-(async () => {
-    const productList = document.querySelector('.products');
+(() => {
+    const productsList = document.querySelector('.products');
     getProducts()
-        .then(products => console.log(products))
-        .then(htmlProds => htmlProds.forEach(el => productList.appendChild(el)));
+        .then(products => products.map(createHtmlEl))
+        .then(htmlProds =>  htmlProds.forEach(el => productsList.appendChild(el)))
+    ;
 })();

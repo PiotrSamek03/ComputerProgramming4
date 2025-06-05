@@ -1,11 +1,13 @@
-package pl.samek.ecommerce.ProductCatalog;
+package pl.samek.ecommerce.productcatalog;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
 public class ProductCatalog {
+
     ProductStorage productStorage;
+
     public ProductCatalog(ProductStorage productStorage) {
         this.productStorage = productStorage;
     }
@@ -21,8 +23,9 @@ public class ProductCatalog {
                 uuid,
                 name,
                 description
-        );
-        this.productStorage.save(newProduct);
+        ); // DOMAIN
+
+        this.productStorage.save(newProduct); //TECH
 
         return newProduct.getId();
     }
@@ -32,15 +35,17 @@ public class ProductCatalog {
     }
 
     public void changePrice(String productId, BigDecimal bigDecimal) {
-        var product = loadProductById(productId);
-        if (bigDecimal.compareTo(BigDecimal.ZERO) < 0) {
+        var product = productStorage.loadProductById(productId);
+
+        if (bigDecimal.compareTo(BigDecimal.ZERO) < 0) { //DOMAIN
             throw new InvalidPriceException();
         }
+
         product.changePrice(bigDecimal);
     }
 
-    public void changeImage(String productId, String URL) {
+    public void changeImage(String productId, String url) {
         var product = productStorage.loadProductById(productId);
-        product.setImage(URL);
+        product.setImage(url); // DOMAIN
     }
 }

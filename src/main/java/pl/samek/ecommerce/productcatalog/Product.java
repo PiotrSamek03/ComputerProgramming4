@@ -1,4 +1,4 @@
-package pl.samek.ecommerce.ProductCatalog;
+package pl.samek.ecommerce.productcatalog;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -7,12 +7,10 @@ public class Product {
     private final UUID uuid;
     private final String name;
     private final String description;
-
     private BigDecimal price;
+    private String url;
 
-    private String URL;
     public Product(UUID uuid, String name, String description) {
-
         this.uuid = uuid;
         this.name = name;
         this.description = description;
@@ -22,16 +20,12 @@ public class Product {
         return uuid.toString();
     }
 
-    public String getDescription() {
-        return description;
-    }
-
     public String getName() {
         return name;
     }
 
-    public void setImage(String url) {
-        this.URL = url;
+    public String getDescription() {
+        return description;
     }
 
     public void changePrice(BigDecimal price) {
@@ -39,10 +33,15 @@ public class Product {
     }
 
     public BigDecimal getPrice() {
-        return this.price;
+        return price;
+    }
+
+    public void setImage(String url) {
+
+        this.url = url;
     }
 
     public String getImage() {
-        return this.URL;
+        return url;
     }
 }

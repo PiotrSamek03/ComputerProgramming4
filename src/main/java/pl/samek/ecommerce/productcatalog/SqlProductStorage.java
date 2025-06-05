@@ -1,5 +1,6 @@
-package pl.samek.ecommerce.ProductCatalog;
+package pl.samek.ecommerce.productcatalog;
 
+import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonValueFormat;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 
@@ -8,7 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
-public class SqlProductStorage implements ProductStorage{
+public class SqlProductStorage implements ProductStorage {
     private final JdbcTemplate jdbcTemplate;
 
     public SqlProductStorage(JdbcTemplate jdbcTemplate) {
@@ -25,7 +26,7 @@ public class SqlProductStorage implements ProductStorage{
                 new Object[]{productId},
                 (rs, i) -> {
                     var product = new Product(
-                            UUID.fromString(rs.getString("ID")),
+                            UUID.fromString((rs.getString("ID"))),
                             rs.getString("NAME"),
                             rs.getString("DESCRIPTION")
                     );

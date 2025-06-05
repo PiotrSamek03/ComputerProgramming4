@@ -1,11 +1,7 @@
-package pl.samek.ecommerce;
+package pl.samek.ecommerce.productcatalog;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
-
-import pl.samek.ecommerce.ProductCatalog.Product;
-import pl.samek.ecommerce.ProductCatalog.ProductCatalog;
-
 
 import java.util.List;
 

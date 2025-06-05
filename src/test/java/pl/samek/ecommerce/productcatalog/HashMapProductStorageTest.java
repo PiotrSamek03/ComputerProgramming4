@@ -1,9 +1,6 @@
-package pl.samek.ecommerce.ProductCatalog;
+package pl.samek.ecommerce.productcatalog;
 
 import org.junit.jupiter.api.Test;
-import pl.samek.ecommerce.ProductCatalog.HashMapProductStorage;
-import pl.samek.ecommerce.ProductCatalog.Product;
-import pl.samek.ecommerce.ProductCatalog.ProductStorage;
 
 import java.util.List;
 import java.util.UUID;

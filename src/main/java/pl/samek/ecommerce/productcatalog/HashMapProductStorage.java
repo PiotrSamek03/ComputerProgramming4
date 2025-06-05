@@ -1,8 +1,8 @@
-package pl.samek.ecommerce.ProductCatalog;
+package pl.samek.ecommerce.productcatalog;
 
 import java.util.List;
 
-public class HashMapProductStorage implements ProductStorage{
+class HashMapProductStorage implements ProductStorage {
     @Override
     public List<Product> allProducts() {
         return null;
@@ -17,5 +17,4 @@ public class HashMapProductStorage implements ProductStorage{
     public Product loadProductById(String productId) {
         return null;
     }
-
 }
