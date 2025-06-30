@@ -1,32 +1,38 @@
 package pl.samek.ecommerce.sales;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import pl.samek.ecommerce.sales.offering.Offer;
+import pl.samek.ecommerce.sales.reservation.AcceptOfferRequest;
+import pl.samek.ecommerce.sales.reservation.ReservationDetails;
 
 @RestController
 public class SalesController {
-    SalesFacade salesFacade;
 
-    public SalesController(SalesFacade salesFacade) {
-        this.salesFacade = salesFacade;
+    SalesFacade sales;
+
+    public SalesController(SalesFacade sales) {
+        this.sales = sales;
     }
 
     @GetMapping("/api/current-offer")
     Offer getCurrentOffer() {
-        return salesFacade.getCurentOffer(getCurrentCustomer());
-    }
-    @PostMapping("/api/add-product/{productId}")
-    void addProduct(@PathVariable(name= "productId") String productId) {
-        salesFacade.addToCart(getCurrentCustomer(), productId);
-    }
-    @PostMapping("/api/accept-offer")
-    void acceptOffer(AcceptOfferCommand acceptOfferCommand) {
-        salesFacade.acceptOffer(acceptOfferCommand);
+        var customerId = getCurrentCustomerId();
+        return sales.getCurrentOffer(customerId);
     }
 
-    private String getCurrentCustomer() {
-        return "piter";
+    @PostMapping("/api/add-product/{productId}")
+    void addProduct(@PathVariable(name = "productId") String productId) {
+        var customerId = getCurrentCustomerId();
+        sales.addProduct(customerId, productId);
+    }
+
+    @PostMapping("/api/accept-offer")
+    ReservationDetails acceptOffer(@RequestBody AcceptOfferRequest acceptOfferRequest) {
+        var customerId = getCurrentCustomerId();
+        return sales.acceptOffer(customerId, acceptOfferRequest);
+    }
+
+    private String getCurrentCustomerId() {
+        return "kuba";
     }
 }
